@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repositories;
 
 use App\Models\User;
+use App\Repositories\interfaces\UserRepositoryInterface;
 use Illuminate\Support\Collection;
 
 class UserRepository implements UserRepositoryInterface
@@ -15,6 +16,11 @@ class UserRepository implements UserRepositoryInterface
     public function find(String $id): ?User
     {
         return User::find($id);
+    }
+
+    public function findByEmail(String $email): ?User
+    {
+        return User::where('email', $email)->first();
     }
 
     public function insert(array $attributes): Bool

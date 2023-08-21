@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Repositories\Interfaces;
+namespace App\Repositories;
 
-use App\Models\User;
+use App\Models\Patient;
 use Illuminate\Support\Collection;
 
-interface UserRepositoryInterface
+interface PatientRepositoryInterface
 {
     function all(): Collection;
-    function find(String $id): ?User;
-    function findByEmail(String $email): ?User;
+    function find(String $id): ?Patient;
     function insert(array $attributes): Bool;
     function update(String $id, array $attributes): Bool;
     function delete(String $id): Bool;
