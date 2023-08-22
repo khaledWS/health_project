@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CONST_Facility_type;
 use App\Models\CONST_Patient_Category;
 use App\Models\CONST_User_Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -53,5 +54,9 @@ INSERT INTO `CONST_doctor_specialties` (`id`, `name`) VALUES
         (new CONST_Patient_Category())->setTranslation('name','en','normal')->setTranslation('name','ar','مريض')->save();
         (new CONST_Patient_Category())->setTranslation('name','en','Student')->setTranslation('name','ar','طالب')->save();
         (new CONST_Patient_Category())->setTranslation('name','en','Parent')->setTranslation('name','ar','ولي أمر')->save();
+
+        CONST_Facility_type::truncate();
+        (new CONST_Facility_type())->setTranslation('name','en','Hospital')->setTranslation('name','ar','مشفى')->save();
+        (new CONST_Facility_type())->setTranslation('name','en','Clinic')->setTranslation('name','ar','عيادة')->save();
     }
 }
