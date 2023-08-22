@@ -13,6 +13,7 @@ class PatientScope implements Scope
      */
     public function apply(Builder $builder, Model $model): void
     {
+        $builder->select($model->defaultSelect);
         // if (auth()->user()->hasRole('facility_admin')) {
         //     //get doctors whos clinics belong to the facility
         // }

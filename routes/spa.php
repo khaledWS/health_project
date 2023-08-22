@@ -17,22 +17,33 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::middleware('auth:sanctum')->group(function (){
-    Route::post('/logout', [AuthController::class, 'logout']);
-
-
-    Route::get('patients', [PatientController::class, 'index']);
-});
-
 Route::post('/login', [AuthController::class, 'login']);
 
 
 
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
 
 
+    /**
+     * PATIENT ROUTES
+     */
+    Route::prefix('patients')->controller(PatientController::class)->group(function () {
+        Route::get('/', [PatientController::class, 'index']);
 
+        Route::prefix('/{patient_id}')->group(function(){
+            Route::get('/', [PatientController::class,'show']);
 
+            /**
+             * PHR ROUTES
+             */
+            Route::prefix('phr')->group(function () {
+                Route::get('vitals','getVitals');
+            });
+        });
+    });
+});

@@ -48,9 +48,10 @@ class PatientController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Patient $patient)
+    public function show(String $patient_id)
     {
-        //
+        $patient = $this->patientService->showPatient($patient_id);
+        return  $this->successResponseWithData($patient);
     }
 
     /**
@@ -75,5 +76,9 @@ class PatientController extends Controller
     public function destroy(Patient $patient)
     {
         //
+    }
+
+    public function getVitals(string $patient_id){
+
     }
 }

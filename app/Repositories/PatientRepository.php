@@ -15,7 +15,7 @@ class PatientRepository
     public function paginate()
     {
         return Patient::query()
-            ->select('id', 'date_of_birth', 'address', 'gender', 'phone', 'national_id')
+            ->select('id','firstname','lastname' ,'date_of_birth', 'address', 'gender','city_id','country_id','about')
             ->with(['user' => function ($user) {
                 $user->select('id', 'username', 'email', 'national_id', 'phone', 'user_type_reference_id', 'user_type_id');
             },

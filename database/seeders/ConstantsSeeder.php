@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\CONST_Patient_Category;
+use App\Models\CONST_User_Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -37,5 +39,19 @@ INSERT INTO `CONST_doctor_specialties` (`id`, `name`) VALUES
 	(4, 'Dermatologist');
            "
         );
+
+        CONST_User_Type::truncate();
+        (new CONST_User_Type())->setTranslation('name','en','Patient')->setTranslation('name','ar','مريض')->save();
+        (new CONST_User_Type())->setTranslation('name','en','Doctor')->setTranslation('name','ar','طبيب')->save();
+        (new CONST_User_Type())->setTranslation('name','en','Lab Technician')->setTranslation('name','ar','اخصائي مختبر')->save();
+        (new CONST_User_Type())->setTranslation('name','en','Pharmacist')->setTranslation('name','ar','صيدلي')->save();
+        (new CONST_User_Type())->setTranslation('name','en','Facility Administrator')->setTranslation('name','ar','مدير مؤسسة')->save();
+        (new CONST_User_Type())->setTranslation('name','en','Country Administrator')->setTranslation('name','ar','مدير دولة')->save();
+        (new CONST_User_Type())->setTranslation('name','en','System Administrator')->setTranslation('name','ar','مدير نظام')->save();
+
+        CONST_Patient_Category::truncate();
+        (new CONST_Patient_Category())->setTranslation('name','en','normal')->setTranslation('name','ar','مريض')->save();
+        (new CONST_Patient_Category())->setTranslation('name','en','Student')->setTranslation('name','ar','طالب')->save();
+        (new CONST_Patient_Category())->setTranslation('name','en','Parent')->setTranslation('name','ar','ولي أمر')->save();
     }
 }
