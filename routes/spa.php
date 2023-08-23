@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\spa\AuthController;
 use App\Http\Controllers\spa\PatientController;
+use App\Http\Controllers\spa\PatientVitalsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,14 +36,19 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::prefix('patients')->controller(PatientController::class)->group(function () {
         Route::get('/', [PatientController::class, 'index']);
 
-        Route::prefix('/{patient_id}')->group(function(){
-            Route::get('/', [PatientController::class,'show']);
+        Route::prefix('/{patient_id}')->group(function () {
+            Route::get('/', [PatientController::class, 'show']);
 
             /**
              * PHR ROUTES
              */
             Route::prefix('phr')->group(function () {
-                Route::get('vitals','getVitals');
+                /**
+                 * VITALS ROUTES
+                 */
+                Route::prefix('vitals')->controller(PatientVitalsController::class)->group(function () {
+                    Route::get('/','index');
+                });
             });
         });
     });

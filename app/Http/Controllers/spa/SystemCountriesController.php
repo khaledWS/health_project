@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\spa;
 
+use App\Http\Controllers\Controller;
 use App\Models\SystemCountries;
 use App\Http\Requests\StoreSystemCountriesRequest;
 use App\Http\Requests\UpdateSystemCountriesRequest;

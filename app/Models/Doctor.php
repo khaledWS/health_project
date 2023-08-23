@@ -11,13 +11,46 @@ class Doctor extends Model
 {
     use SoftDeletes, HasFactory;
 
+    public const USER_TYPE = 2;
 
 
-            /**
+    public $defaultSelect = [
+        'id',
+        'firstname',
+        'lastname',
+        'date_of_birth',
+        'address',
+        'gender',
+        'city_id',
+        'country_id',
+        'about'
+    ];
+
+
+    public $with = ['user'];
+
+
+    /**
      * The "booted" method of the model.
      */
     protected static function booted(): void
     {
         static::addGlobalScope(new DoctorsScope);
+    }
+
+
+
+    /**
+     * Relationships
+     */
+
+    /**
+     * user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->hasOne(User::class, 'user_type_reference_id')->where('user_type_id', static::USER_TYPE);
     }
 }

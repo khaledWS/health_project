@@ -13,20 +13,21 @@ class DoctorsScope implements Scope
      */
     public function apply(Builder $builder, Model $model): void
     {
-        if (auth()->user()->hasRole('facility_admin')) {
-            //get doctors whos clinics belong to the facility
-        }
+        $builder->select($model->defaultSelect);
+        // if (auth()->user()->hasRole('facility_admin')) {
+        //     //get doctors whos clinics belong to the facility
+        // }
 
-        if (auth()->user()->hasRole('nurse')) {
-            //get doctors whos clinics belong to the facility that the nurse belongs to
-        }
+        // if (auth()->user()->hasRole('nurse')) {
+        //     //get doctors whos clinics belong to the facility that the nurse belongs to
+        // }
 
-        if (auth()->user()->hasRole('country_admin')) {
-            //get doctors whos clinics belong to the country
-        }
+        // if (auth()->user()->hasRole('country_admin')) {
+        //     //get doctors whos clinics belong to the country
+        // }
 
-        if (auth()->user()->hasRole('reception')) {
-            //get doctors whos in the s ame clinic as the reception
-        }
+        // if (auth()->user()->hasRole('reception')) {
+        //     //get doctors whos in the s ame clinic as the reception
+        // }
     }
 }

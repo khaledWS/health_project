@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call([PatientSeeder::class]);
         $this->call([ClinicSeeder::class]);
         $this->call([DoctorSeeder::class]);
+        $this->call([PatientVitalsSeeder::class]);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }
