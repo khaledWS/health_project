@@ -13,6 +13,7 @@ class PatientSeeder extends Seeder
      */
     public function run(): void
     {
+        Patient::truncate();
         Patient::factory(3)->create();
 
     }
