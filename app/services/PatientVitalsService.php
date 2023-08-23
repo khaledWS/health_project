@@ -26,6 +26,15 @@ class PatientVitalsService
         return $vitals;
     }
 
+    public function storePatientVitals(string $patient_id, array $data)
+    {
+        $data['patient_id'] = $patient_id;
+        $data['created_by'] = auth()->user()->id;
+        $data['updated_by'] = auth()->user()->id;
+        $vital = $this->patientVitalsRepository->insert($data);
+        return $vital;
+    }
+
     // public function showPatient(string $patient_id)
     // {
     //     $patient = $this->patientVitalsRepository->find($patient_id);

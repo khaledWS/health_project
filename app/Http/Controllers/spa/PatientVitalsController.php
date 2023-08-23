@@ -8,6 +8,7 @@ use App\Http\Requests\StorePatientVitalsRequest;
 use App\Http\Requests\UpdatePatientVitalsRequest;
 use App\Http\Traits\SpaResponseTrait;
 use App\Services\PatientVitalsService;
+use Exception;
 
 class PatientVitalsController extends Controller
 {
@@ -35,34 +36,24 @@ class PatientVitalsController extends Controller
         return $this->successResponseWithData($vitalsPaginate);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePatientVitalsRequest $request)
+    public function store(string $patient_id, StorePatientVitalsRequest $request)
     {
-        //
+        $data = $request->validated();
+        $storeVitalsStatus = $this->patientVitalsService->storePatientVitals($patient_id, $data);
+        if(!$storeVitalsStatus) {
+            throw new Exception('error');
+        }
+        return $this->successResponse();
     }
 
     /**
      * Display the specified resource.
      */
     public function show(PatientVitals $patientVitals)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(PatientVitals $patientVitals)
     {
         //
     }

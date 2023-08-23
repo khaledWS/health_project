@@ -22,11 +22,12 @@ class patientVitalsRepository
     //     return PatientVitals::find($id);
     // }
 
-    // public function insert(array $attributes): Bool
-    // {
-    //     $PatientVitals = PatientVitals::insert($attributes);
-    //     return $PatientVitals;
-    // }
+    public function insert(array $attributes): Bool
+    {
+
+        $PatientVitals = PatientVitals::insert($attributes);
+        return $PatientVitals;
+    }
 
     // public function update(String $id, array $attributes): Bool
     // {

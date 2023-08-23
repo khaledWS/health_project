@@ -48,6 +48,7 @@ Route::middleware('auth:sanctum')->group(function () {
                  */
                 Route::prefix('vitals')->controller(PatientVitalsController::class)->group(function () {
                     Route::get('/','index');
+                    Route::post('/store','store');
                 });
             });
         });
