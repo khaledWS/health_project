@@ -22,7 +22,7 @@ class AuthenticationService
     public function loginSPA($attributes): ?User
     {
         $user = $this->UserRepository->findByEmail($attributes['email']);
-
+        $user->identity;
 
         if (!$user) {
             throw new UserNotFoundException();

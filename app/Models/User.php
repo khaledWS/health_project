@@ -43,4 +43,13 @@ class User extends Authenticatable
         // 'password' => 'hashed',
         // 'password' => 'md5',
     ];
+
+
+    // public $with = ['identity'];
+
+
+    public function identity(){
+        $model_name = CONST_User_Type::findOrFail($this->user_type_id)->model_name;
+        return $this->belongsTo($model_name,'user_type_reference_id');
+        }
 }

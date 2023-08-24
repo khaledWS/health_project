@@ -30,9 +30,10 @@ class AuthController extends Controller
             $user = $this->authenticationService->loginSPA($request->validated());
 
             if ($user) {
-                return $this->successResponse();
+                return $this->successResponseWithData($user);
             }
         } catch (\Throwable $th) {
+            dd($th);
             return $this->errorResponse();
         }
     }
