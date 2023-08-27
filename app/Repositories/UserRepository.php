@@ -3,10 +3,9 @@
 namespace App\Repositories;
 
 use App\Models\User;
-use App\Repositories\interfaces\UserRepositoryInterface;
 use Illuminate\Support\Collection;
 
-class UserRepository implements UserRepositoryInterface
+class UserRepository
 {
     public function all(): Collection
     {

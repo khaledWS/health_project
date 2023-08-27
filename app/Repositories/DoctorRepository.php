@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Models\Doctor;
 use Illuminate\Support\Collection;
 
-class DoctorRepository implements DoctorRepositoryInterface
+class DoctorRepository
 {
     public function all(): Collection
     {
