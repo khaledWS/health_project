@@ -28,6 +28,7 @@ class PatientController extends Controller
     public function index()
     {
         $patients = $this->patientService->PaginatePatients();
+        dd($patients);
         $patientsResourceCollection = PatientsResource::collection($patients);
         return  $this->successResponseWithData($patientsResourceCollection);
     }
