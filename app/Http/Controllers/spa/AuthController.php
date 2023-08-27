@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\spa;
 
 
-use App\http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\loginRequest;
 use App\Http\Traits\SpaResponseTrait;
-use App\Repositories\interfaces\UserRepositoryInterface;
 use App\Services\AuthenticationService;
 use Exception;
 

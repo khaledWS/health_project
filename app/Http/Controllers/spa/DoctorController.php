@@ -5,7 +5,7 @@ namespace App\Http\Controllers\spa;
 use App\Models\Doctor;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
-use App\http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use App\Http\Traits\API\SpaResponseTrait;
 use App\Services\DoctorService;
 use App\Services\PatientService;
