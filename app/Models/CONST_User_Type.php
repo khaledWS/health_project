@@ -11,7 +11,7 @@ class CONST_User_Type extends Model
 
     public $translatable = ['name'];
 
-    protected $table = 'CONST_User_Type';
+    protected $table = 'const_user_type';
 
     public $timestamps = false;
 
