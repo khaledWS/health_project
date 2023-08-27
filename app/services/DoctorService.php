@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Services;
+namespace App\services;
 
-use App\Repository\DoctorRepositoryInterface;
+use App\Repositories\DoctorRepository;
 
 class DoctorService{
 
     protected $DoctorRepository;
 
-    public function __construct(DoctorRepositoryInterface $DoctorRepository)
+    public function __construct(DoctorRepository $DoctorRepository)
     {
         $this->DoctorRepository = $DoctorRepository;
     }
