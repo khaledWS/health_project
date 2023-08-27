@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Patient;
 use App\Http\Requests\StorePatientRequest;
 use App\Http\Requests\UpdatePatientRequest;
+use App\Http\Resources\PatientResource;
+use App\Http\Resources\PatientsResource;
 use App\Http\Traits\SpaResponseTrait;
 use App\Services\PatientService;
 
@@ -26,7 +28,8 @@ class PatientController extends Controller
     public function index()
     {
         $patients = $this->patientService->PaginatePatients();
-        return  $this->successResponseWithData($patients);
+        $patientsResourceCollection = PatientsResource::collection($patients);
+        return  $this->successResponseWithData($patientsResourceCollection);
     }
 
     /**
@@ -51,7 +54,8 @@ class PatientController extends Controller
     public function show(String $patient_id)
     {
         $patient = $this->patientService->showPatient($patient_id);
-        return  $this->successResponseWithData($patient);
+        $patientResource  = new PatientResource($patient);
+        return  $this->successResponseWithData($patientResource);
     }
 
     /**
