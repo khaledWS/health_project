@@ -10,7 +10,7 @@ class PatientVitalsService
 
     protected $patientVitalsRepository;
 
-    public function __construct(PatientVitalsRepository $patientVitalsRepository)
+    public function __construct(patientVitalsRepository $patientVitalsRepository)
     {
         $this->patientVitalsRepository = $patientVitalsRepository;
     }

@@ -6,7 +6,8 @@ use App\Models\Doctor;
 use App\Http\Requests\StoreDoctorRequest;
 use App\Http\Requests\UpdateDoctorRequest;
 use App\Http\Controllers\Controller;
-use App\Http\Traits\API\SpaResponseTrait;
+
+use App\Http\Traits\SpaResponseTrait;
 use App\Services\DoctorService;
 use App\Services\PatientService;
 use Illuminate\Http\Request;
