@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Repositories\PatientVitalsRepository;
+use App\Repositories\patientVitalsRepository;
 use Exception;
 
 class PatientVitalsService
