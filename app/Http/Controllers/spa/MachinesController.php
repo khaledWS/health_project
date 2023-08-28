@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\spa;
 
-use App\Models\ProfileTest;
-use App\Http\Requests\StoreProfileTestRequest;
-use App\Http\Requests\UpdateProfileTestRequest;
+use App\Http\Controllers\Controller;
 
-class ProfileTestController extends Controller
+use App\Models\machines;
+use App\Http\Requests\StoremachinesRequest;
+use App\Http\Requests\UpdatemachinesRequest;
+
+class MachinesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class ProfileTestController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreProfileTestRequest $request)
+    public function store(StoremachinesRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class ProfileTestController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(ProfileTest $profileTest)
+    public function show(machines $machines)
     {
         //
     }
@@ -43,7 +45,7 @@ class ProfileTestController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(ProfileTest $profileTest)
+    public function edit(machines $machines)
     {
         //
     }
@@ -51,7 +53,7 @@ class ProfileTestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProfileTestRequest $request, ProfileTest $profileTest)
+    public function update(UpdatemachinesRequest $request, machines $machines)
     {
         //
     }
@@ -59,7 +61,7 @@ class ProfileTestController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(ProfileTest $profileTest)
+    public function destroy(machines $machines)
     {
         //
     }

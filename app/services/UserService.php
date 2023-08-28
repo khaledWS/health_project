@@ -2,13 +2,13 @@
 
 namespace App\Services;
 
-use App\Repository\UserRepositoryInterface;
+use App\Repositories\UserRepository;
 
 class UserService{
 
     protected $UserRepository;
 
-    public function __construct(UserRepositoryInterface $UserRepository)
+    public function __construct(UserRepository $UserRepository)
     {
         $this->UserRepository = $UserRepository;
     }

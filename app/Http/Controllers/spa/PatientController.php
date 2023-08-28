@@ -10,6 +10,7 @@ use App\Http\Resources\PatientResource;
 use App\Http\Resources\PatientsResource;
 use App\Http\Traits\SpaResponseTrait;
 use App\Services\PatientService;
+use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
@@ -25,11 +26,18 @@ class PatientController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $patients = $this->patientService->PaginatePatients();
+        $attributes = [
+            'start' => $request->start,
+            'length' => $request->length,
+            'search_value' => $request->search_value,
+            'order_by' => $request->order_by
+        ];
+        $patients = $this->patientService->PaginatePatients($attributes);
         // dd($patients);
-        $patientsResourceCollection = PatientsResource::collection($patients);
+        // PatientsResource::withoutWrapping();
+        $patientsResourceCollection = new PatientsResource($patients);
         return  $this->successResponseWithData($patientsResourceCollection);
     }
 

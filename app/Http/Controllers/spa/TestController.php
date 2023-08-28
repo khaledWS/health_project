@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\spa;
 
-use App\Models\machines;
-use App\Http\Requests\StoremachinesRequest;
-use App\Http\Requests\UpdatemachinesRequest;
+use App\Http\Controllers\Controller;
 
-class MachinesController extends Controller
+use App\Models\Test;
+use App\Http\Requests\StoreTestRequest;
+use App\Http\Requests\UpdateTestRequest;
+
+class TestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class MachinesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoremachinesRequest $request)
+    public function store(StoreTestRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class MachinesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(machines $machines)
+    public function show(Test $test)
     {
         //
     }
@@ -43,7 +45,7 @@ class MachinesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(machines $machines)
+    public function edit(Test $test)
     {
         //
     }
@@ -51,7 +53,7 @@ class MachinesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatemachinesRequest $request, machines $machines)
+    public function update(UpdateTestRequest $request, Test $test)
     {
         //
     }
@@ -59,7 +61,7 @@ class MachinesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(machines $machines)
+    public function destroy(Test $test)
     {
         //
     }

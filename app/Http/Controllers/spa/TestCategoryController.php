@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\spa;
 
-use App\Models\LabSpecimen;
-use App\Http\Requests\StoreLabSpecimenRequest;
-use App\Http\Requests\UpdateLabSpecimenRequest;
+use App\Http\Controllers\Controller;
 
-class LabSpecimenController extends Controller
+use App\Models\TestCategory;
+use App\Http\Requests\StoreTestCategoryRequest;
+use App\Http\Requests\UpdateTestCategoryRequest;
+
+class TestCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class LabSpecimenController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreLabSpecimenRequest $request)
+    public function store(StoreTestCategoryRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class LabSpecimenController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(LabSpecimen $labSpecimen)
+    public function show(TestCategory $testCategory)
     {
         //
     }
@@ -43,7 +45,7 @@ class LabSpecimenController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(LabSpecimen $labSpecimen)
+    public function edit(TestCategory $testCategory)
     {
         //
     }
@@ -51,7 +53,7 @@ class LabSpecimenController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateLabSpecimenRequest $request, LabSpecimen $labSpecimen)
+    public function update(UpdateTestCategoryRequest $request, TestCategory $testCategory)
     {
         //
     }
@@ -59,7 +61,7 @@ class LabSpecimenController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(LabSpecimen $labSpecimen)
+    public function destroy(TestCategory $testCategory)
     {
         //
     }

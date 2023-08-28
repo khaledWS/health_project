@@ -3,8 +3,9 @@
 use App\Http\Controllers\spa\AuthController;
 use App\Http\Controllers\spa\PatientController;
 use App\Http\Controllers\spa\PatientVitalsController;
+use App\Http\Controllers\spa\TestController;
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,8 @@ Route::post('/login', [AuthController::class, 'login']);
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    UserResource::withoutWrapping();
+    return new UserResource(auth()->user());
 });
 
 Route::middleware('auth:sanctum')->group(function () {
@@ -50,7 +52,25 @@ Route::middleware('auth:sanctum')->group(function () {
                     Route::get('/','index');
                     Route::post('/store','store');
                 });
+
+                Route::prefix('tests')->group(function(){
+                    Route::get('single-tests', [PatientController::class,'get-single-tests']);
+                    Route::get('profile-tests', [PatientController::class,'get-profile-tests']);
+                    Route::get('order-test', [PatientController::class,'order-test']);
+                });
+
+                Route::prefix('medication')->group(function(){
+                    Route::get('medications', [PatientController::class,'get-single-tests']);
+                    Route::get('mar', [PatientController::class,'get-profile-tests']);
+                    Route::get('mar-logs', [PatientController::class,'order-test']);
+                });
             });
         });
+    });
+
+
+    Route::prefix('tests')->group(function (){
+        Route::get('{category_id}/test',[TestController::class]);
+        Route::get('{test_id}/labs',[TestController::class]);
     });
 });

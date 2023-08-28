@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\spa;
 
-use App\Models\Clinic;
-use App\Http\Requests\StoreClinicRequest;
-use App\Http\Requests\UpdateClinicRequest;
+use App\Http\Controllers\Controller;
+use App\Models\LabSpecimen;
+use App\Http\Requests\StoreLabSpecimenRequest;
+use App\Http\Requests\UpdateLabSpecimenRequest;
 
-class ClinicController extends Controller
+class LabSpecimenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class ClinicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreClinicRequest $request)
+    public function store(StoreLabSpecimenRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class ClinicController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Clinic $clinic)
+    public function show(LabSpecimen $labSpecimen)
     {
         //
     }
@@ -43,7 +44,7 @@ class ClinicController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Clinic $clinic)
+    public function edit(LabSpecimen $labSpecimen)
     {
         //
     }
@@ -51,7 +52,7 @@ class ClinicController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateClinicRequest $request, Clinic $clinic)
+    public function update(UpdateLabSpecimenRequest $request, LabSpecimen $labSpecimen)
     {
         //
     }
@@ -59,7 +60,7 @@ class ClinicController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Clinic $clinic)
+    public function destroy(LabSpecimen $labSpecimen)
     {
         //
     }

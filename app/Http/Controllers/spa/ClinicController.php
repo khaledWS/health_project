@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\spa;
 
-use App\Models\MeasuringUnit;
-use App\Http\Requests\StoreMeasuringUnitRequest;
-use App\Http\Requests\UpdateMeasuringUnitRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Clinic;
+use App\Http\Requests\StoreClinicRequest;
+use App\Http\Requests\UpdateClinicRequest;
 
-class MeasuringUnitController extends Controller
+
+class ClinicController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class MeasuringUnitController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMeasuringUnitRequest $request)
+    public function store(StoreClinicRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class MeasuringUnitController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(MeasuringUnit $measuringUnit)
+    public function show(Clinic $clinic)
     {
         //
     }
@@ -43,7 +45,7 @@ class MeasuringUnitController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MeasuringUnit $measuringUnit)
+    public function edit(Clinic $clinic)
     {
         //
     }
@@ -51,7 +53,7 @@ class MeasuringUnitController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMeasuringUnitRequest $request, MeasuringUnit $measuringUnit)
+    public function update(UpdateClinicRequest $request, Clinic $clinic)
     {
         //
     }
@@ -59,7 +61,7 @@ class MeasuringUnitController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MeasuringUnit $measuringUnit)
+    public function destroy(Clinic $clinic)
     {
         //
     }

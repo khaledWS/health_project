@@ -23,7 +23,8 @@ class Doctor extends Model
         'gender',
         'city_id',
         'country_id',
-        'about'
+        'about',
+        'speciality_id'
     ];
 
 
@@ -52,5 +53,9 @@ class Doctor extends Model
     public function user()
     {
         return $this->hasOne(User::class, 'user_type_reference_id')->where('user_type_id', static::USER_TYPE);
+    }
+
+    public function specialty(){
+        return $this->belongsTo(CONST_Doctor_Specialty::class,'speciality_id');
     }
 }

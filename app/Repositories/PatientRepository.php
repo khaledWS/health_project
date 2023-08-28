@@ -12,8 +12,9 @@ class PatientRepository
         return Patient::all();
     }
 
-    public function paginate()
+    public function paginate($attributes)
     {
+        $this->ReformPaginateAttributes();
         return Patient::query()
             ->select('id','firstname','lastname' ,'date_of_birth', 'address', 'gender','city_id','country_id','about')
             ->with(['user' => function ($user) {
@@ -24,7 +25,9 @@ class PatientRepository
                 $avatar->select('id','full_small_path');
             }
 
-            ])->paginate(10);
+            ])
+            ->orderBy('')
+            ->paginate(10);
     }
 
     public function find(String $id): ?Patient

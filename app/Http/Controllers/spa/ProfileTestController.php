@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\spa;
 
-use App\Models\TestCategory;
-use App\Http\Requests\StoreTestCategoryRequest;
-use App\Http\Requests\UpdateTestCategoryRequest;
+use App\Http\Controllers\Controller;
 
-class TestCategoryController extends Controller
+use App\Models\ProfileTest;
+use App\Http\Requests\StoreProfileTestRequest;
+use App\Http\Requests\UpdateProfileTestRequest;
+
+class ProfileTestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class TestCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTestCategoryRequest $request)
+    public function store(StoreProfileTestRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class TestCategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(TestCategory $testCategory)
+    public function show(ProfileTest $profileTest)
     {
         //
     }
@@ -43,7 +45,7 @@ class TestCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TestCategory $testCategory)
+    public function edit(ProfileTest $profileTest)
     {
         //
     }
@@ -51,7 +53,7 @@ class TestCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTestCategoryRequest $request, TestCategory $testCategory)
+    public function update(UpdateProfileTestRequest $request, ProfileTest $profileTest)
     {
         //
     }
@@ -59,7 +61,7 @@ class TestCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TestCategory $testCategory)
+    public function destroy(ProfileTest $profileTest)
     {
         //
     }

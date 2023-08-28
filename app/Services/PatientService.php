@@ -21,9 +21,9 @@ class PatientService
      *
      * @return \Illuminate\Support\Collection
      */
-    public function paginatePatients()
+    public function paginatePatients($attributes)
     {
-        $patients = $this->PatientRepository->paginate();
+        $patients = $this->PatientRepository->paginate($attributes);
         return $patients;
     }
 

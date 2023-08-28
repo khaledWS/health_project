@@ -48,8 +48,18 @@ class User extends Authenticatable
     // public $with = ['identity'];
 
 
-    public function identity(){
+    public const USER_TYPE_PATIENT = 1;
+    public const USER_TYPE_DOCTOR = 2;
+    public const USER_TYPE_LAB = 3;
+    public const USER_TYPE_Pharmacist = 4;
+    public const USER_TYPE_Facility_Administrator = 5;
+    public const USER_TYPE_Country_Administrator = 6;
+    public const USER_TYPE_System_Administrator = 7;
+
+
+    public function identity()
+    {
         $model_name = CONST_User_Type::findOrFail($this->user_type_id)->model_name;
-        return $this->belongsTo($model_name,'user_type_reference_id');
-        }
+        return $this->belongsTo($model_name, 'user_type_reference_id');
+    }
 }

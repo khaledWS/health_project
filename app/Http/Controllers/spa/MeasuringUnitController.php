@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\spa;
 
-use App\Models\Test;
-use App\Http\Requests\StoreTestRequest;
-use App\Http\Requests\UpdateTestRequest;
+use App\Http\Controllers\Controller;
 
-class TestController extends Controller
+use App\Models\MeasuringUnit;
+use App\Http\Requests\StoreMeasuringUnitRequest;
+use App\Http\Requests\UpdateMeasuringUnitRequest;
+
+class MeasuringUnitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +29,7 @@ class TestController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTestRequest $request)
+    public function store(StoreMeasuringUnitRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class TestController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Test $test)
+    public function show(MeasuringUnit $measuringUnit)
     {
         //
     }
@@ -43,7 +45,7 @@ class TestController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Test $test)
+    public function edit(MeasuringUnit $measuringUnit)
     {
         //
     }
@@ -51,7 +53,7 @@ class TestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTestRequest $request, Test $test)
+    public function update(UpdateMeasuringUnitRequest $request, MeasuringUnit $measuringUnit)
     {
         //
     }
@@ -59,7 +61,7 @@ class TestController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Test $test)
+    public function destroy(MeasuringUnit $measuringUnit)
     {
         //
     }
