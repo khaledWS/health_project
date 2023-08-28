@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('lab_specimens', function (Blueprint $table) {
-            $table->id();
+            $table->mediumIncrements('id');
             $table->json('title');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');

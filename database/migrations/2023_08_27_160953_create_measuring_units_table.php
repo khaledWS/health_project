@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('measuring_units', function (Blueprint $table) {
-            $table->id();
+            $table->mediumIncrements('id');
             $table->string('title',80);
             $table->unsignedTinyInteger('type')->comment('1 lab,2 phar');
             $table->unsignedTinyInteger('medicine_type')->nullable()->comment('1 purch, 2 trade');
