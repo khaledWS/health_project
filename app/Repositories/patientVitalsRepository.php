@@ -7,37 +7,49 @@ use Illuminate\Support\Collection;
 
 class patientVitalsRepository
 {
-    // public function all(): Collection
-    // {
-    //     return PatientVitals::all();
-    // }
 
-    public function paginate(string $patient_id)
+    
+    /**
+     * paginate
+     *
+     * @param  string $patient_id
+     * @param  array $attributes
+     * @return array
+     */
+    public function paginate(string $patient_id, array $attributes): array
     {
-        return PatientVitals::query()->where('patient_id', $patient_id)->paginate(10);
+        $reformed_attributes = reformPaginateAttributes($attributes);
+
+        $vitals =   $this->PatientsVitalsPaginateQuery($patient_id,$reformed_attributes)->get();
+        $vitals_count = $this->PatientsVitalsPaginateQuery($patient_id,$reformed_attributes)->count();
+
+        return compact('vitals', 'vitals_count');
     }
 
-    // public function find(String $id): ?PatientVitals
-    // {
-    //     return PatientVitals::find($id);
-    // }
 
-    public function insert(array $attributes): Bool
+    public function insert(array $attributes): PatientVitals
     {
-
-        $PatientVitals = PatientVitals::insert($attributes);
+        $PatientVitals = PatientVitals::create($attributes);
         return $PatientVitals;
     }
 
-    // public function update(String $id, array $attributes): Bool
-    // {
-    //     $PatientVitals = PatientVitals::find($id);
-    //     return $PatientVitals->update($attributes);
-    // }
 
-    // public function delete(String $id): Bool
-    // {
-    //     $PatientVitals = PatientVitals::find($id);
-    //     return $PatientVitals->delete();
-    // }
+    /**
+     * PatientsVitalsPaginateQuery
+     *
+     * @param  string $patient_id
+     * @param  array $attributes
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function PatientsVitalsPaginateQuery(string $patient_id, array $attributes): \Illuminate\Database\Eloquent\Builder
+    {
+        return PatientVitals::query()
+            ->with(['doctor' => function ($doctor) {
+                $doctor->select();
+            }])
+            ->where('patient_id', $patient_id)
+            ->orderBy($attributes['order_by'], $attributes['order_direction'])
+            ->offset($attributes['start'])
+            ->limit($attributes['length']);
+    }
 }

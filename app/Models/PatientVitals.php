@@ -10,6 +10,30 @@ class PatientVitals extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'clinic_id',
+        'doctor_id',
+        'patient_id',
+        'patient_id',
+        'height',
+        'weight',
+        'pulseRate',
+        'temperature',
+        'bp_systolic',
+        'bloodSugar',
+        'respiratory',
+        'spo_two',
+        'bp_diastolic',
+        'head_circumference',
+        'urine',
+        'bmi',
+        'weight_status',
+        'pain_scale',
+        'datetime',
+        'created_by',
+        'updated_by',
+    ];
+
     public $with = ['doctor'];
 
     /**

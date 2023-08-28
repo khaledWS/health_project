@@ -16,13 +16,15 @@ class PatientVitalsService
     }
 
     /**
-     * get Patient vitals and paginate them
+     * paginatePatientVitals
      *
-     * @return \Illuminate\Contracts\Pagination\LengthAwarePaginator
+     * @param  string $patient_id
+     * @param  array $attributes
+     * @return array
      */
-    public function paginatePatientVitals(string $patient_id)
+    public function paginatePatientVitals(string $patient_id, array $attributes): array
     {
-        $vitals = $this->patientVitalsRepository->paginate($patient_id);
+        $vitals = $this->patientVitalsRepository->paginate($patient_id, $attributes);
         return $vitals;
     }
 
@@ -34,14 +36,4 @@ class PatientVitalsService
         $vital = $this->patientVitalsRepository->insert($data);
         return $vital;
     }
-
-    // public function showPatient(string $patient_id)
-    // {
-    //     $patient = $this->patientVitalsRepository->find($patient_id);
-
-    //     if (!$patient) {
-    //         throw new Exception('Patient Not Found');
-    //     }
-    //     return $patient;
-    // }
 }
