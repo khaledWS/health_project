@@ -5,6 +5,7 @@ namespace App\Http\Controllers\spa;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\loginRequest;
+use App\Http\Resources\UserResource;
 use App\Http\Traits\SpaResponseTrait;
 use App\Services\AuthenticationService;
 use Exception;
@@ -29,7 +30,7 @@ class AuthController extends Controller
             $user = $this->authenticationService->loginSPA($request->validated());
 
             if ($user) {
-                return $this->successResponseWithData($user);
+                return $this->successResponseWithData(new UserResource($user));
             }
         } catch (\Throwable $th) {
             dd($th);
