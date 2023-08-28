@@ -7,6 +7,7 @@ use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class PatientsResource extends ResourceCollection
 {
+    public static $wrap = null;
     /**
      * Transform the resource collection into an array.
      *
@@ -14,33 +15,14 @@ class PatientsResource extends ResourceCollection
      */
     public function toArray(Request $request): array
     {
-        dd($this);
+        // dd($this->collection);
         return [
-            // 'data' => $this->collection,
-            // 'links' => [
-            //     'self' => 'link-value',
-            // ],
-            // "id" =>  $this->id,
-            // "name"=> $this->fistname .'' . $this->lastname ,
-            // "email"=> $this->user->email,
-            // "phone"=> $this->user->phone,
-            // "national_id"=> $this->user->national_id,
-            // "links"=> ["autism", "assessment"],
-            // "dob"=> $this->date_of_birth ,
-            // "address"=> $this->address,
-            // "age"=> Carbon::parse($this->date_of_birth)->age,
-            // "gender"=> $this->gender == 1 ? 'male' : 'female',
-            // // "autism"=> "Yes",
-            // // "description"=> "Autism Patient",
-            // // "class"=> "fifth",
-            // // "elementarySchool"=> "test school1",
-            // // "middleSchool"=> "test school2",
-            // // "hightSchool"=> "test school3",
-            // // "seniorSchool"=> "test school4",
-            // // "medicalStatus"=> ["asthma", "diabetes"],
-            // // "father"=> "father name",
-            // // "mother"=> "mother name",
-            // "image"=> "https://qlickhealth.com/admin/uploads/user/1663844341_temp_file_20220922_135827.jpg"
+            'data' => $this->collection['patients']->map(function ($patient) {
+                return new PatientResource($patient);
+            }),
+            'meta' => [
+                'total_posts' => $this->collection['patients_count'],
+            ],
         ];
     }
 }

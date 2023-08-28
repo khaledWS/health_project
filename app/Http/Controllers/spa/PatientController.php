@@ -32,11 +32,10 @@ class PatientController extends Controller
             'start' => $request->start,
             'length' => $request->length,
             'search_value' => $request->search_value,
-            'order_by' => $request->order_by
+            'order_by' => $request->order_by,
+            'order_direction' => $request->order_direction
         ];
         $patients = $this->patientService->PaginatePatients($attributes);
-        // dd($patients);
-        // PatientsResource::withoutWrapping();
         $patientsResourceCollection = new PatientsResource($patients);
         return  $this->successResponseWithData($patientsResourceCollection);
     }
