@@ -48,7 +48,6 @@ class AuthController extends Controller
                 throw new Exception();
             }
         } catch (\Throwable $th) {
-            dd($th);
             return $this->errorResponse();
         }
     }
