@@ -38,7 +38,7 @@ class AuthenticationService
 
     public function logoutSPA()
     {
-        Auth::logout();
+        auth()->guard('web')->logout();
 
         session()->invalidate();
 
