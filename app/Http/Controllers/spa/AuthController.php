@@ -41,6 +41,8 @@ class AuthController extends Controller
 
     public function logout()
     {
+        
+        // dd('s');
         try {
             $status = $this->authenticationService->logoutSPA();
             if ($status) {
