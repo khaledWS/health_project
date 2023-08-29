@@ -30,8 +30,8 @@ Route::post('/login', function (Request $request) {
 
 
 Route::post('/get-data-from-mio/forwardtelemetry', function (Request $request){
-  return $request->deviceId;
+  // return $request->deviceId;
   DB::table('test_mio')->insert([
-    'data' => $request->data
+    'data' => json_encode($request->all())
   ]);
 });
