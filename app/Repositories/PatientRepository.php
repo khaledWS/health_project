@@ -20,7 +20,7 @@ class PatientRepository
         $patients =   $this->doctorPatientsPageQuery($reformed_attributes)->get();
         $patients_count = $this->doctorPatientsPageQuery($reformed_attributes)->count();
 
-        return compact('patients','patients_count');
+        return compact('patients', 'patients_count');
     }
 
     public function find(String $id): ?Patient
@@ -44,6 +44,16 @@ class PatientRepository
     {
         $Patient = Patient::find($id);
         return $Patient->delete();
+    }
+
+    public function paginateSingleTests($patient_id, $attributes)
+    {
+        $reformed_attributes = reformPaginateAttributes($attributes);
+
+        $patients =   $this->doctorPatientsPageQuery($reformed_attributes)->get();
+        $patients_count = $this->doctorPatientsPageQuery($reformed_attributes)->count();
+
+        return compact('patients', 'patients_count');
     }
 
     public function doctorPatientsPageQuery($reformed_attributes)

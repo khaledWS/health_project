@@ -3,6 +3,7 @@
 use App\Http\Controllers\spa\AuthController;
 use App\Http\Controllers\spa\PatientController;
 use App\Http\Controllers\spa\PatientVitalsController;
+use App\Http\Controllers\spa\TestCategoryController;
 use App\Http\Controllers\spa\TestController;
 use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
@@ -49,28 +50,35 @@ Route::middleware('auth:sanctum')->group(function () {
                  * VITALS ROUTES
                  */
                 Route::prefix('vitals')->controller(PatientVitalsController::class)->group(function () {
-                    Route::get('/','index');
-                    Route::post('/store','store');
+                    Route::get('/', 'index');
+                    Route::post('/store', 'store');
                 });
 
-                Route::prefix('tests')->group(function(){
-                    Route::get('single-tests', [PatientController::class,'get-single-tests']);
-                    Route::get('profile-tests', [PatientController::class,'get-profile-tests']);
-                    Route::get('order-test', [PatientController::class,'order-test']);
+                /**
+                 * PATIENT TESTS ROUTES
+                 */
+                Route::prefix('tests')->group(function () {
+                    Route::get('single-tests', [PatientController::class, 'get_single_tests']);
+                    Route::get('profile-tests', [PatientController::class, 'get-profile-tests']);
+                    Route::get('order-test', [PatientController::class, 'order-test']);
                 });
 
-                Route::prefix('medication')->group(function(){
-                    Route::get('medications', [PatientController::class,'get-single-tests']);
-                    Route::get('mar', [PatientController::class,'get-profile-tests']);
-                    Route::get('mar-logs', [PatientController::class,'order-test']);
+                /**
+                 * PATIENT MEDICATION ROUTES
+                 */
+                Route::prefix('medication')->group(function () {
+                    Route::get('medications', [PatientController::class, 'get-single-tests']);
+                    Route::get('mar', [PatientController::class, 'get-profile-tests']);
+                    Route::get('mar-logs', [PatientController::class, 'order-test']);
                 });
             });
         });
     });
 
 
-    Route::prefix('tests')->group(function (){
-        Route::get('{category_id}/test',[TestController::class]);
-        Route::get('{test_id}/labs',[TestController::class]);
+    Route::prefix('tests')->group(function () {
+        Route::get('/categories', [TestCategoryController::class,'getCategories']);
+        Route::get('category/{category_id}/test', [TestController::class,'getCategoryTests']);
+        Route::get('{test_id}/labs', [TestController::class]);
     });
 });

@@ -4,12 +4,22 @@ namespace App\Http\Controllers\spa;
 
 use App\Http\Controllers\Controller;
 
-use App\Models\Test;
+
 use App\Http\Requests\StoreTestRequest;
 use App\Http\Requests\UpdateTestRequest;
+use App\Http\Traits\SpaResponseTrait;
+use App\Services\TestService;
 
 class TestController extends Controller
 {
+    use SpaResponseTrait;
+
+    
+
+    public function __construct(private TestService $testService)
+    {
+        
+    }
     /**
      * Display a listing of the resource.
      */
@@ -37,7 +47,7 @@ class TestController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Test $test)
+    public function show()
     {
         //
     }
@@ -45,7 +55,7 @@ class TestController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Test $test)
+    public function edit()
     {
         //
     }
@@ -53,7 +63,7 @@ class TestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTestRequest $request, Test $test)
+    public function update(UpdateTestRequest $request, )
     {
         //
     }
@@ -61,8 +71,15 @@ class TestController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Test $test)
+    public function destroy()
     {
         //
+    }
+
+
+    public function getCategoryTests(string $category_id)
+    {
+        $tests = $this->testService->getCategoryTests($category_id);
+        return $this->successResponseWithData($tests);
     }
 }

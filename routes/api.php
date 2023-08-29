@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +25,12 @@ Route::post('/login', function (Request $request) {
       return   auth()->user();
     }
     return false;
+});
+
+
+
+Route::get('/get-data-from-mio', function (Request $request){
+  DB::table('test_mio')->insert([
+    'data' => $request->data
+  ]);
 });

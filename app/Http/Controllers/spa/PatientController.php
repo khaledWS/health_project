@@ -89,8 +89,28 @@ class PatientController extends Controller
     {
         //
     }
+    
+    /**
+     * get_single_tests
+     *
+     * @param  Request $request
+     * @param  string $patient_id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function get_single_tests(Request $request, string $patient_id): \Illuminate\Http\JsonResponse
+    {
+        $attributes = [
+            'start' => $request->start,
+            'length' => $request->length,
+            'search_value' => $request->search_value,
+            'order_by' => $request->order_by,
+            'order_direction' => $request->order_direction
+        ];
 
-    public function getVitals(string $patient_id){
+        $tests = $this->patientService->paginatePatientSingleTests($patient_id, $attributes);
+
+        $singleTestsResource = new PatientSingleTestsCollection($tests);
+        return $this->successResponseWithData($singleTestsResource);
 
     }
 }
