@@ -29,7 +29,7 @@ Route::post('/login', function (Request $request) {
 
 
 
-Route::get('/get-data-from-mio/forwardtelemetry', function (Request $request){
+Route::post('/get-data-from-mio/forwardtelemetry', function (Request $request){
   return $request->body;
   DB::table('test_mio')->insert([
     'data' => $request->data
