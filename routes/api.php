@@ -29,9 +29,8 @@ Route::post('/login', function (Request $request) {
 
 
 
-Route::post('/get-data-from-mio/forwardtelemetry', function (Request $request){
-  // return $request->deviceId;
-  DB::connection('mysql2')->table('test_mio')->insert([
+Route::post('/Anyhub_mio/forwardtelemetry', function (Request $request){
+  DB::connection('mysql2')->table('hl7_anyhub_mio_results')->insert([
     'data' => json_encode($request->all())
   ]);
 });
