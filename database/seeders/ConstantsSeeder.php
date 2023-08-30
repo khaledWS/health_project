@@ -20,11 +20,11 @@ class ConstantsSeeder extends Seeder
     {
 
         DB::unprepared("
-        TRUNCATE TABLE CONST_System_Language;
+        TRUNCATE TABLE const_system_language;
         ");
         DB::unprepared(
             "
-            INSERT INTO CONST_System_Language (`language_name_en`,`language_name_ar`, `language_abbr_en`, `language_name_og`) VALUES
+            INSERT INTO const_system_language (`language_name_en`,`language_name_ar`, `language_abbr_en`, `language_name_og`) VALUES
             ('English', 'الإنجليزية', 'en', 'English'),
             ('Arabic', 'العربية', 'ar', 'العربية');
             "
