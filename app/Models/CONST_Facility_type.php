@@ -11,7 +11,7 @@ class CONST_Facility_type extends Model
 
     public $translatable = ['name'];
 
-    protected $table = 'CONST_facility_types';
+    protected $table = 'const_facility_types';
 
     public $timestamps = false;
 }
