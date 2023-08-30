@@ -51,7 +51,7 @@ INSERT INTO `const_doctor_specialties` (`id`, `name`) VALUES
         (new CONST_User_Type())->setTranslation('name', 'en', 'Facility Administrator')->setTranslation('name', 'ar', 'مدير مؤسسة')->setModelType('')->save();
         (new CONST_User_Type())->setTranslation('name', 'en', 'Country Administrator')->setTranslation('name', 'ar', 'مدير دولة')->setModelType('')->save();
         (new CONST_User_Type())->setTranslation('name', 'en', 'System Administrator')->setTranslation('name', 'ar', 'مدير نظام')->setModelType('')->save();
-        (new CONST_User_Type())->setTranslation('name', 'en', 'facility_staff')->setTranslation('name', 'ar', 'موظف')->setModelType('App\Models\StaffMember')->save();
+        (new CONST_User_Type())->setTranslation('name', 'en', 'facility_staff')->setTranslation('name', 'ar', 'موظف')->setModelType('App\Models\FacilityStaff')->save();
 
         CONST_Patient_Category::truncate();
         (new CONST_Patient_Category())->setTranslation('name', 'en', 'normal')->setTranslation('name', 'ar', 'مريض')->save();

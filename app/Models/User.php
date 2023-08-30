@@ -55,6 +55,7 @@ class User extends Authenticatable
     public const USER_TYPE_Facility_Administrator = 5;
     public const USER_TYPE_Country_Administrator = 6;
     public const USER_TYPE_System_Administrator = 7;
+    public const USER_TYPE_STAFF = 8;
 
 
     public function identity()

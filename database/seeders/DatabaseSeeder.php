@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         // $this->call([SystemCountriesSeeder::class]);
         // $this->call([PatientSeeder::class]);
         // $this->call([ClinicSeeder::class]);
-        // $this->call([DoctorSeeder::class]);
+        $this->call([DoctorSeeder::class]);
         // $this->call([PatientVitalsSeeder::class]);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }

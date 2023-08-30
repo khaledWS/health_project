@@ -16,18 +16,44 @@ class UserResource extends JsonResource
     public function toArray(Request $request): array
     {
         $resourceData = [];
-        if($this->user_type_id == User::USER_TYPE_DOCTOR){
+        if ($this->user_type_id == User::USER_TYPE_DOCTOR) {
             $resourceData = [
                 "id" =>  $this->id,
-               "firstname" => $this->identity->firstname,
-               "lastname"=> $this->identity->lastname,
-               "email" => $this->email,
-               "speciality" => $this->identity->specialty->name,
-               "image"=>  "https://qlickhealth.com/admin/uploads/provider/1608636620_SSS.jpg",
-               "type" => "Doctor",
-               "type_id" => User::USER_TYPE_DOCTOR,
-               "rules" => [1]
-           ];
+                "firstname" => $this->identity->firstname,
+                "lastname" => $this->identity->lastname,
+                "email" => $this->email,
+                "speciality" => $this->identity->specialty->name,
+                "image" =>  "https://qlickhealth.com/admin/uploads/provider/1608636620_SSS.jpg",
+                "type" => "Doctor",
+                "type_id" => User::USER_TYPE_DOCTOR,
+                "rules" => [1]
+            ];
+        }
+        if ($this->user_type_id == User::USER_TYPE_STAFF) {
+            $resourceData = [
+                "id" =>  $this->id,
+                "firstname" => $this->identity->firstname,
+                "lastname" => $this->identity->lastname,
+                "email" => $this->email,
+                "speciality" => 'staff',
+                "image" =>  "https://qlickhealth.com/admin/uploads/user/1610265165_cropped8625811454323105144.jpg",
+                //    "type" => "Doctor",
+                "type_id" => User::USER_TYPE_STAFF,
+                //    "rules" => [1]
+            ];
+            if ($this->identity->staff_type_id == 1) {
+                $additonal_data = [
+                    "type" => "Nurse",
+                    "rules" => [2]
+                ];
+                $resourceData = array_merge($resourceData, $additonal_data);
+            } elseif ($this->identity->staff_type_id == 2) {
+                $additonal_data = [
+                    "type" => "Reception",
+                    "rules" => [3]
+                ];
+                $resourceData = array_merge($resourceData, $additonal_data);
+            }
         }
         return $resourceData;
     }
