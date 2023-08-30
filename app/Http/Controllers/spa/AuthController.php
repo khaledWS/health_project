@@ -33,7 +33,6 @@ class AuthController extends Controller
                 return $this->successResponseWithData(new UserResource($user));
             }
         } catch (\Throwable $th) {
-            dd($th);
             return $this->errorResponse();
         }
     }
@@ -42,7 +41,6 @@ class AuthController extends Controller
     public function logout()
     {
         
-        // dd('s');
         try {
             $status = $this->authenticationService->logoutSPA();
             if ($status) {
