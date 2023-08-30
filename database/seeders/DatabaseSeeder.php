@@ -16,11 +16,11 @@ class DatabaseSeeder extends Seeder
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         $this->call([ConstantsSeeder::class]);
-        $this->call([SystemCountriesSeeder::class]);
-        $this->call([PatientSeeder::class]);
-        $this->call([ClinicSeeder::class]);
-        $this->call([DoctorSeeder::class]);
-        $this->call([PatientVitalsSeeder::class]);
+        // $this->call([SystemCountriesSeeder::class]);
+        // $this->call([PatientSeeder::class]);
+        // $this->call([ClinicSeeder::class]);
+        // $this->call([DoctorSeeder::class]);
+        // $this->call([PatientVitalsSeeder::class]);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

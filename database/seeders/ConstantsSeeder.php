@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\CONST_Country;
+use App\Models\CONST_facility_staff_type;
 use App\Models\CONST_Facility_type;
 use App\Models\CONST_Patient_Category;
 use App\Models\CONST_User_Type;
@@ -43,13 +44,14 @@ INSERT INTO `CONST_doctor_specialties` (`id`, `name`) VALUES
         );
 
         CONST_User_Type::truncate();
-        (new CONST_User_Type())->setTranslation('name', 'en', 'Patient')->setTranslation('name', 'ar', 'مريض')->save();
-        (new CONST_User_Type())->setTranslation('name', 'en', 'Doctor')->setTranslation('name', 'ar', 'طبيب')->save();
-        (new CONST_User_Type())->setTranslation('name', 'en', 'Lab Technician')->setTranslation('name', 'ar', 'اخصائي مختبر')->save();
-        (new CONST_User_Type())->setTranslation('name', 'en', 'Pharmacist')->setTranslation('name', 'ar', 'صيدلي')->save();
-        (new CONST_User_Type())->setTranslation('name', 'en', 'Facility Administrator')->setTranslation('name', 'ar', 'مدير مؤسسة')->save();
-        (new CONST_User_Type())->setTranslation('name', 'en', 'Country Administrator')->setTranslation('name', 'ar', 'مدير دولة')->save();
-        (new CONST_User_Type())->setTranslation('name', 'en', 'System Administrator')->setTranslation('name', 'ar', 'مدير نظام')->save();
+        (new CONST_User_Type())->setTranslation('name', 'en', 'Patient')->setTranslation('name', 'ar', 'مريض')->setModelType('App\Models\Patient')->save();
+        (new CONST_User_Type())->setTranslation('name', 'en', 'Doctor')->setTranslation('name', 'ar', 'طبيب')->setModelType('App\Models\Doctor')->save();
+        (new CONST_User_Type())->setTranslation('name', 'en', 'Lab Technician')->setTranslation('name', 'ar', 'اخصائي مختبر')->setModelType('')->save();
+        (new CONST_User_Type())->setTranslation('name', 'en', 'Pharmacist')->setTranslation('name', 'ar', 'صيدلي')->setModelType('')->save();
+        (new CONST_User_Type())->setTranslation('name', 'en', 'Facility Administrator')->setTranslation('name', 'ar', 'مدير مؤسسة')->setModelType('')->save();
+        (new CONST_User_Type())->setTranslation('name', 'en', 'Country Administrator')->setTranslation('name', 'ar', 'مدير دولة')->setModelType('')->save();
+        (new CONST_User_Type())->setTranslation('name', 'en', 'System Administrator')->setTranslation('name', 'ar', 'مدير نظام')->setModelType('')->save();
+        (new CONST_User_Type())->setTranslation('name', 'en', 'facility_staff')->setTranslation('name', 'ar', 'موظف')->setModelType('App\Models\StaffMember')->save();
 
         CONST_Patient_Category::truncate();
         (new CONST_Patient_Category())->setTranslation('name', 'en', 'normal')->setTranslation('name', 'ar', 'مريض')->save();
@@ -60,6 +62,12 @@ INSERT INTO `CONST_doctor_specialties` (`id`, `name`) VALUES
         (new CONST_Facility_type())->setTranslation('name', 'en', 'Hospital')->setTranslation('name', 'ar', 'مشفى')->save();
         (new CONST_Facility_type())->setTranslation('name', 'en', 'Clinic')->setTranslation('name', 'ar', 'عيادة')->save();
         (new CONST_Facility_type())->setTranslation('name', 'en', 'School')->setTranslation('name', 'ar', 'مدرسة')->save();
+
+
+        CONST_facility_staff_type::truncate();
+        (new CONST_facility_staff_type())->setTranslation('name', 'en', 'Nurse')->setTranslation('name', 'ar', 'ممرض')->save();
+        (new CONST_facility_staff_type())->setTranslation('name', 'en', 'Reception')->setTranslation('name', 'ar', 'إستقبال')->save();
+        
 
 
         CONST_Country::truncate();

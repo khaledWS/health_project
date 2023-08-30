@@ -18,4 +18,12 @@ class CONST_User_Type extends Model
 
 
     public const PATIENT = 1;
+
+
+
+    public function setModelType($value)
+    {
+        $this->model_name = $value;
+        return $this;
+    }
 }
