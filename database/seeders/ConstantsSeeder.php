@@ -31,11 +31,11 @@ class ConstantsSeeder extends Seeder
         );
 
         DB::unprepared("
-        TRUNCATE TABLE CONST_doctor_specialties;
+        TRUNCATE TABLE const_doctor_specialties;
         ");
         DB::unprepared(
             "
-INSERT INTO `CONST_doctor_specialties` (`id`, `name`) VALUES
+INSERT INTO `const_doctor_specialties` (`id`, `name`) VALUES
 	(1, 'Anaesthesiologist'),
 	(2, 'Cardiologist'),
 	(3, 'Dentist'),
