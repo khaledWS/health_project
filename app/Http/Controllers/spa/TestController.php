@@ -8,17 +8,20 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTestRequest;
 use App\Http\Requests\UpdateTestRequest;
 use App\Http\Traits\SpaResponseTrait;
+use App\Models\Const_Test_Types;
+use App\Services\ProfileTestService;
 use App\Services\TestService;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
     use SpaResponseTrait;
 
-    
+
 
     public function __construct(private TestService $testService)
     {
-        
     }
     /**
      * Display a listing of the resource.
@@ -63,7 +66,7 @@ class TestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTestRequest $request, )
+    public function update(UpdateTestRequest $request,)
     {
         //
     }
@@ -77,9 +80,30 @@ class TestController extends Controller
     }
 
 
-    public function getCategoryTests(string $category_id)
+    public function getCategoryTests(string $category_id): JsonResponse
     {
         $tests = $this->testService->getCategoryTests($category_id);
         return $this->successResponseWithData($tests);
     }
+
+    public function getTypes(): JsonResponse
+    {
+        $testTypes = $this->testService->getTestTypes();
+        return $this->successResponseWithData($testTypes);
+    }
+
+    public function getTypeTests(Request $request): JsonResponse
+    {
+        $type = $request->type;
+        $data = collect();
+        if($type == Const_Test_Types::TYPE_PROFILE){
+            $data =   app()->make(ProfileTestService::class)->all();
+        }elseif($type == Const_Test_Types::TYPE_SINGLE){
+            $data =   $this->testService->getTests();
+        }elseif($type == Const_Test_Types::TYPE_MACHINE){
+        }
+        return $this->successResponseWithData($data);
+    }
+
+    
 }

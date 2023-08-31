@@ -2,9 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Models\Const_Test_Types;
 use App\Models\Test;
 use Illuminate\Support\Collection;
-
+use SebastianBergmann\CodeCoverage\Report\Xml\Tests;
 
 class TestRepository
 {
@@ -49,4 +50,11 @@ class TestRepository
         ->where('category_id', $category_id)
         ->get();
     }
+
+    public function getTestTypes(): Collection
+    {
+        return Const_Test_Types::all();
+    }
+
+    
 }

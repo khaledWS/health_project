@@ -6,6 +6,7 @@ use App\Models\CONST_Country;
 use App\Models\CONST_facility_staff_type;
 use App\Models\CONST_Facility_type;
 use App\Models\CONST_Patient_Category;
+use App\Models\Const_Test_Types;
 use App\Models\CONST_User_Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -67,6 +68,11 @@ INSERT INTO `const_doctor_specialties` (`id`, `name`) VALUES
         CONST_facility_staff_type::truncate();
         (new CONST_facility_staff_type())->setTranslation('name', 'en', 'Nurse')->setTranslation('name', 'ar', 'ممرض')->save();
         (new CONST_facility_staff_type())->setTranslation('name', 'en', 'Reception')->setTranslation('name', 'ar', 'إستقبال')->save();
+
+        Const_Test_Types::truncate();
+        (new Const_Test_Types())->setTranslation('name', 'en', 'Single')->setTranslation('name', 'ar', 'Single')->save();
+        (new Const_Test_Types())->setTranslation('name', 'en', 'Profile')->setTranslation('name', 'ar', 'Profile')->save();
+        (new Const_Test_Types())->setTranslation('name', 'en', 'Machine')->setTranslation('name', 'ar', 'Machine')->save();
         
 
 

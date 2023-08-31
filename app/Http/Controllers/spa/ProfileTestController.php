@@ -3,13 +3,21 @@
 namespace App\Http\Controllers\spa;
 
 use App\Http\Controllers\Controller;
-
+use App\Http\Traits\SpaResponseTrait;
 use App\Models\ProfileTest;
 use App\Http\Requests\StoreProfileTestRequest;
 use App\Http\Requests\UpdateProfileTestRequest;
+use App\Services\ProfileTestService;
 
 class ProfileTestController extends Controller
 {
+    use SpaResponseTrait;
+
+
+
+    public function __construct(private ProfileTestService $testService)
+    {
+    }
     /**
      * Display a listing of the resource.
      */
