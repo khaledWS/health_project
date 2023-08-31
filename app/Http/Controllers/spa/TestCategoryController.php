@@ -7,9 +7,22 @@ use App\Http\Controllers\Controller;
 use App\Models\TestCategory;
 use App\Http\Requests\StoreTestCategoryRequest;
 use App\Http\Requests\UpdateTestCategoryRequest;
+use App\Http\Traits\SpaResponseTrait;
+use App\Services\TestCategoryService;
+use Illuminate\Http\JsonResponse;
 
 class TestCategoryController extends Controller
 {
+    use SpaResponseTrait;
+
+    private $TestCategoryService;
+
+    public function __construct(TestCategoryService $TestCategoryService)
+    {
+        $this->TestCategoryService = $TestCategoryService;
+    }
+
+
     /**
      * Display a listing of the resource.
      */
@@ -64,5 +77,12 @@ class TestCategoryController extends Controller
     public function destroy(TestCategory $testCategory)
     {
         //
+    }
+
+    public function getCategories(): JsonResponse
+    {
+        $categories =  $this->TestCategoryService->getCategoriesCollection();
+        
+        return $this->successResponseWithData($categories);
     }
 }

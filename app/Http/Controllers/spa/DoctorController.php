@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Traits\SpaResponseTrait;
 use App\Services\DoctorService;
-use App\Services\PatientService;
 use Illuminate\Http\Request;
 
 class DoctorController extends Controller

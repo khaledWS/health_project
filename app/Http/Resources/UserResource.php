@@ -55,6 +55,19 @@ class UserResource extends JsonResource
                 $resourceData = array_merge($resourceData, $additonal_data);
             }
         }
+        if ($this->user_type_id == User::USER_TYPE_Facility_Administrator) {
+            $resourceData = [
+                "id" =>  $this->id,
+                "firstname" => $this->identity->firstname,
+                "lastname" => $this->identity->lastname,
+                "email" => $this->email,
+                "speciality" => 'Hospital',
+                "image" =>  "https://qlickhealth.com/admin/uploads/provider/1605003750_download_(4).jpg",
+                   "type" => "Hospital",
+                "type_id" => User::USER_TYPE_Facility_Administrator,
+                "rules" => [4]
+            ];
+        }
         return $resourceData;
     }
 }

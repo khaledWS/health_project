@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Doctor;
+use App\Models\FacilityAdministrator;
 use App\Models\FacilityStaff;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -99,5 +100,31 @@ class DoctorSeeder extends Seeder
             'user_type_reference_id' => $recep->id,
             'password' => md5(123),
         ]);
+
+
+
+        $hospitalAdmin =  FacilityAdministrator::updateOrCreate(
+            ['lastname' => 'Reception'],
+            [
+                'firstName' => "Qlick Health",
+                'lastname' => "Hospital",
+                'gender' => fake()->numberBetween(1, 2),
+                'address' => fake()->address(),
+                'date_of_birth' => fake()->date(),
+                'country_id' => 141,
+                'city_id' => 141,
+                'created_by' => 1,
+                'updated_by' => 1,
+            ]);
+    
+            User::updateOrCreate(
+                ['email' => 'hospital@test.com'],
+                [
+                'email' => 'hospital@test.com',
+                'username' => 'Qlick Health Hospital',
+                'user_type_id' =>5 , 
+                'user_type_reference_id' => $hospitalAdmin->id,
+                'password' => md5(123),
+            ]);
     }
 }
