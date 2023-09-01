@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LaboratoryController;
 use App\Http\Controllers\spa\AuthController;
 use App\Http\Controllers\spa\PatientController;
 use App\Http\Controllers\spa\PatientVitalsController;
@@ -60,7 +61,7 @@ Route::middleware('auth:sanctum')->group(function () {
                 Route::prefix('tests')->group(function () {
                     Route::get('single-tests', [PatientController::class, 'get_single_tests']);
                     Route::get('profile-tests', [PatientController::class, 'get-profile-tests']);
-                    Route::get('order-test', [PatientController::class, 'order-test']);
+                    Route::post('order-test', [TestController::class, 'order-test']);
                 });
 
                 /**
@@ -81,6 +82,6 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/types/tests', [TestController::class,'getTypeTests']);
         Route::get('/categories', [TestCategoryController::class,'getCategories']);
         Route::get('category/{category_id}/test', [TestController::class,'getCategoryTests']);
-        Route::get('{test_id}/labs', [TestController::class]);
+        Route::get('/labs', [TestController::class]);
     });
 });

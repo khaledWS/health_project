@@ -105,5 +105,16 @@ class TestController extends Controller
         return $this->successResponseWithData($data);
     }
 
+    public function getTestLabs(Request $request): JsonResponse
+    {
+        $test_type = $request->test_type;
+        $test_id = $request->test_id;
+        $patient_id = $request->patient_id;
+
+        $labs =  $this->testService->getTestLabs($test_type, $test_id, $patient_id);
+
+        return $this->successResponseWithData($labs);
+    }
+
     
 }

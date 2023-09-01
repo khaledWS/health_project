@@ -32,4 +32,13 @@ class TestService
     {
        return $this->TestRepository->all();
     }
+
+    public function getTestLabs(string $test_type,string $test_id, string $patient_id): \Illuminate\Support\Collection
+    {
+        $labService = app()->make(LaboratoryService::class);
+
+        $labs = $labService->getLabsByTestsAndLocation($test_type, $test_id, $patient_id);
+
+        return $labs;
+    }
 }
