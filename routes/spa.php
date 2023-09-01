@@ -1,28 +1,27 @@
 <?php
 
-use App\Http\Controllers\LaboratoryController;
+use App\Http\Controllers\DiagnosisController;
+use App\Http\Controllers\PatientSoapController;
 use App\Http\Controllers\spa\AuthController;
 use App\Http\Controllers\spa\PatientController;
 use App\Http\Controllers\spa\PatientVitalsController;
 use App\Http\Controllers\spa\TestCategoryController;
 use App\Http\Controllers\spa\TestController;
 use App\Http\Resources\UserResource;
+use App\Models\PatientCarePlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| API Routes
+| SPA Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register API routes for your application. These
+| Here is where you can register The Single Page Application (SPA) routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-// Route::post('/login', [AuthController::class, 'login']);
-
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -72,6 +71,21 @@ Route::middleware('auth:sanctum')->group(function () {
                     Route::get('mar', [PatientController::class, 'get-profile-tests']);
                     Route::get('mar-logs', [PatientController::class, 'order-test']);
                 });
+
+                /**
+                 * SOAP ROUTES
+                 */
+                Route::prefix('soap')->group(function () {
+                    Route::get('/index', [PatientSoapController::class, 'index']);
+                    Route::get('/store', [PatientSoapController::class, 'store']);
+                    Route::get('/export', [PatientSoapController::class, 'export']);
+                });
+
+                Route::prefix('careplan')->group(function () {
+                    Route::get('/index', [PatientCarePlan::class, 'index']);
+                    Route::get('/store', [PatientCarePlan::class, 'index']);
+                    Route::get('/export', [PatientCarePlan::class, 'index']);
+                });
             });
         });
     });
@@ -84,4 +98,8 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('category/{category_id}/test', [TestController::class,'getCategoryTests']);
         Route::get('/labs', [TestController::class]);
     });
+
+
+    //Diagnosis route
+    Route::get('diagnosis', [DiagnosisController::class,'get']);
 });
