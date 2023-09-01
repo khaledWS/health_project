@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\spa;
 
+use App\Http\Controllers\Controller;
 use App\Models\FacilityStaff;
 use App\Http\Requests\StoreFacilityStaffRequest;
 use App\Http\Requests\UpdateFacilityStaffRequest;

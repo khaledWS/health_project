@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\spa;
 
-use App\Models\FacilityAdministrator;
-use App\Http\Requests\StoreFacilityAdministratorRequest;
-use App\Http\Requests\UpdateFacilityAdministratorRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Laboratory;
+use App\Http\Requests\StoreLaboratoryRequest;
+use App\Http\Requests\UpdateLaboratoryRequest;
 
-class FacilityAdministratorController extends Controller
+class LaboratoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class FacilityAdministratorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreFacilityAdministratorRequest $request)
+    public function store(StoreLaboratoryRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class FacilityAdministratorController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(FacilityAdministrator $facilityAdministrator)
+    public function show(Laboratory $laboratory)
     {
         //
     }
@@ -43,7 +44,7 @@ class FacilityAdministratorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(FacilityAdministrator $facilityAdministrator)
+    public function edit(Laboratory $laboratory)
     {
         //
     }
@@ -51,7 +52,7 @@ class FacilityAdministratorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFacilityAdministratorRequest $request, FacilityAdministrator $facilityAdministrator)
+    public function update(UpdateLaboratoryRequest $request, Laboratory $laboratory)
     {
         //
     }
@@ -59,8 +60,9 @@ class FacilityAdministratorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(FacilityAdministrator $facilityAdministrator)
+    public function destroy(Laboratory $laboratory)
     {
         //
     }
+    
 }

@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\DiagnosisController;
-use App\Http\Controllers\PatientSoapController;
+use App\Http\Controllers\spa\DiagnosisController;
+use App\Http\Controllers\spa\PatientSoapController;
 use App\Http\Controllers\spa\AuthController;
+use App\Http\Controllers\spa\PatientCarePlanController;
 use App\Http\Controllers\spa\PatientController;
 use App\Http\Controllers\spa\PatientVitalsController;
 use App\Http\Controllers\spa\TestCategoryController;
 use App\Http\Controllers\spa\TestController;
 use App\Http\Resources\UserResource;
-use App\Models\PatientCarePlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -76,15 +76,15 @@ Route::middleware('auth:sanctum')->group(function () {
                  * SOAP ROUTES
                  */
                 Route::prefix('soap')->group(function () {
-                    Route::get('/index', [PatientSoapController::class, 'index']);
-                    Route::get('/store', [PatientSoapController::class, 'store']);
-                    Route::get('/export', [PatientSoapController::class, 'export']);
+                    Route::get('/index', [PatientSoapController::class, 'index']); //done
+                    Route::get('/store', [PatientSoapController::class, 'store']);  //done:
+                    Route::get('/export', [PatientSoapController::class, 'export']); //TODO:
                 });
 
                 Route::prefix('careplan')->group(function () {
-                    Route::get('/index', [PatientCarePlan::class, 'index']);
-                    Route::get('/store', [PatientCarePlan::class, 'index']);
-                    Route::get('/export', [PatientCarePlan::class, 'index']);
+                    Route::get('/index', [PatientCarePlanController::class, 'index']);
+                    Route::get('/store', [PatientCarePlanController::class, 'index']);
+                    Route::get('/export', [PatientCarePlanController::class, 'index']);
                 });
             });
         });

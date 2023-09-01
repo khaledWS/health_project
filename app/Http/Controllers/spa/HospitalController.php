@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\spa;
 
-use App\Models\Diagnosis;
-use App\Http\Requests\StoreDiagnosisRequest;
-use App\Http\Requests\UpdateDiagnosisRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Hospital;
+use App\Http\Requests\StoreHospitalRequest;
+use App\Http\Requests\UpdateHospitalRequest;
 
-class DiagnosisController extends Controller
+class HospitalController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +16,6 @@ class DiagnosisController extends Controller
     {
         //
     }
-    
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +28,7 @@ class DiagnosisController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDiagnosisRequest $request)
+    public function store(StoreHospitalRequest $request)
     {
         //
     }
@@ -36,7 +36,7 @@ class DiagnosisController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Diagnosis $diagnosis)
+    public function show(Hospital $hospital)
     {
         //
     }
@@ -44,7 +44,7 @@ class DiagnosisController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Diagnosis $diagnosis)
+    public function edit(Hospital $hospital)
     {
         //
     }
@@ -52,7 +52,7 @@ class DiagnosisController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDiagnosisRequest $request, Diagnosis $diagnosis)
+    public function update(UpdateHospitalRequest $request, Hospital $hospital)
     {
         //
     }
@@ -60,7 +60,7 @@ class DiagnosisController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Diagnosis $diagnosis)
+    public function destroy(Hospital $hospital)
     {
         //
     }

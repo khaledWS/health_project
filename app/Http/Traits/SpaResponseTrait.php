@@ -30,39 +30,38 @@ trait SpaResponseTrait
         ], 200);
     }
 
-    public function successResponseWithLinks($message, $data, $name = 'image'): JsonResponse
-    {
-        if ($data instanceof Collection) {
-            foreach ($data as $item) {
-                if ($item->$name != null){
-                    $item->$name = Storage::disk('public')->url($item->$name);
-                }
-            }
-        } else {
-            if ($data->$name != null){
-                $data->$name = Storage::disk('public')->url($data->$name);
+    // public function successResponseWithLinks($message, $data, $name = 'image'): JsonResponse
+    // {
+    //     if ($data instanceof Collection) {
+    //         foreach ($data as $item) {
+    //             if ($item->$name != null){
+    //                 $item->$name = Storage::disk('public')->url($item->$name);
+    //             }
+    //         }
+    //     } else {
+    //         if ($data->$name != null){
+    //             $data->$name = Storage::disk('public')->url($data->$name);
 
-            }else{
-                $data->$name = null;
-            }
-        }
+    //         }else{
+    //             $data->$name = null;
+    //         }
+    //     }
 
-        return Response()->json([
-            "success" => true,
-            "code" => 200,
-            "message" => $message,
-            "data" => $data
-        ]);
+    //     return Response()->json([
+    //         "success" => true,
+    //         "code" => 200,
+    //         "message" => $message,
+    //         "data" => $data
+    //     ]);
 
 
-    }
+    // }
 
-    public function successCreatedResponse($message, $data)
+    public function successCreatedResponse($data = null)
     {
         return Response()->json([
             "success" => true,
             "code" => 201,
-            "message" => $message,
             "data" => $data
         ], 201);
     }

@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\spa;
 
-use App\Models\PatientCarePlan;
-use App\Http\Requests\StorePatientCarePlanRequest;
-use App\Http\Requests\UpdatePatientCarePlanRequest;
+use App\Http\Controllers\Controller;
+use App\Models\FacilityAdministrator;
+use App\Http\Requests\StoreFacilityAdministratorRequest;
+use App\Http\Requests\UpdateFacilityAdministratorRequest;
 
-class PatientCarePlanController extends Controller
+class FacilityAdministratorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class PatientCarePlanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePatientCarePlanRequest $request)
+    public function store(StoreFacilityAdministratorRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class PatientCarePlanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PatientCarePlan $patientCarePlan)
+    public function show(FacilityAdministrator $facilityAdministrator)
     {
         //
     }
@@ -43,7 +44,7 @@ class PatientCarePlanController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PatientCarePlan $patientCarePlan)
+    public function edit(FacilityAdministrator $facilityAdministrator)
     {
         //
     }
@@ -51,7 +52,7 @@ class PatientCarePlanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePatientCarePlanRequest $request, PatientCarePlan $patientCarePlan)
+    public function update(UpdateFacilityAdministratorRequest $request, FacilityAdministrator $facilityAdministrator)
     {
         //
     }
@@ -59,7 +60,7 @@ class PatientCarePlanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PatientCarePlan $patientCarePlan)
+    public function destroy(FacilityAdministrator $facilityAdministrator)
     {
         //
     }

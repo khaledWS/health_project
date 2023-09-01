@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\spa;
 
-use App\Models\PatientSoap;
-use App\Http\Requests\StorePatientSoapRequest;
-use App\Http\Requests\UpdatePatientSoapRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Diagnosis;
+use App\Http\Requests\StoreDiagnosisRequest;
+use App\Http\Requests\UpdateDiagnosisRequest;
 
-class PatientSoapController extends Controller
+class DiagnosisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +16,7 @@ class PatientSoapController extends Controller
     {
         //
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -27,7 +29,7 @@ class PatientSoapController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePatientSoapRequest $request)
+    public function store(StoreDiagnosisRequest $request)
     {
         //
     }
@@ -35,7 +37,7 @@ class PatientSoapController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(PatientSoap $patientSoap)
+    public function show(Diagnosis $diagnosis)
     {
         //
     }
@@ -43,7 +45,7 @@ class PatientSoapController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(PatientSoap $patientSoap)
+    public function edit(Diagnosis $diagnosis)
     {
         //
     }
@@ -51,7 +53,7 @@ class PatientSoapController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePatientSoapRequest $request, PatientSoap $patientSoap)
+    public function update(UpdateDiagnosisRequest $request, Diagnosis $diagnosis)
     {
         //
     }
@@ -59,7 +61,7 @@ class PatientSoapController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(PatientSoap $patientSoap)
+    public function destroy(Diagnosis $diagnosis)
     {
         //
     }

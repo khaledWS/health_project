@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\spa;
 
-use App\Models\Hospital;
-use App\Http\Requests\StoreHospitalRequest;
-use App\Http\Requests\UpdateHospitalRequest;
+use App\Http\Controllers\Controller;
+use App\Models\PatientCarePlan;
+use App\Http\Requests\StorePatientCarePlanRequest;
+use App\Http\Requests\UpdatePatientCarePlanRequest;
 
-class HospitalController extends Controller
+class PatientCarePlanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +28,7 @@ class HospitalController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreHospitalRequest $request)
+    public function store(StorePatientCarePlanRequest $request)
     {
         //
     }
@@ -35,7 +36,7 @@ class HospitalController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Hospital $hospital)
+    public function show(PatientCarePlan $patientCarePlan)
     {
         //
     }
@@ -43,7 +44,7 @@ class HospitalController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Hospital $hospital)
+    public function edit(PatientCarePlan $patientCarePlan)
     {
         //
     }
@@ -51,7 +52,7 @@ class HospitalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateHospitalRequest $request, Hospital $hospital)
+    public function update(UpdatePatientCarePlanRequest $request, PatientCarePlan $patientCarePlan)
     {
         //
     }
@@ -59,7 +60,7 @@ class HospitalController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Hospital $hospital)
+    public function destroy(PatientCarePlan $patientCarePlan)
     {
         //
     }
