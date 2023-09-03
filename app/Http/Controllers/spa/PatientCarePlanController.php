@@ -6,31 +6,52 @@ use App\Http\Controllers\Controller;
 use App\Models\PatientCarePlan;
 use App\Http\Requests\StorePatientCarePlanRequest;
 use App\Http\Requests\UpdatePatientCarePlanRequest;
+use App\Http\Resources\PatientCarePlanCollectionResource;
+use App\Http\Traits\SpaPaginationTrait;
+use App\Http\Traits\SpaResponseTrait;
+use App\Services\PatientCarePlanService;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class PatientCarePlanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    use SpaResponseTrait, SpaPaginationTrait;
+
+    private $PatientCarePlanService;
+
+    public function __construct(PatientCarePlanService $PatientCarePlanService)
     {
-        //
+        $this->PatientCarePlanService = $PatientCarePlanService;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      */
-    public function create()
+    public function index(string $patient_id, Request $request): JsonResponse
     {
-        //
+        $paginationAttributes = $this->collectPaginationAttributes($request);
+
+        $carePlansPaginated = $this->PatientCarePlanService->paginatePatientSoap($patient_id, $paginationAttributes);
+
+        $carePlanPaginatedResource = new PatientCarePlanCollectionResource($carePlansPaginated);
+
+        return  $this->successResponseWithData($carePlanPaginatedResource);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePatientCarePlanRequest $request)
+    public function store(string $patient_id, StorePatientCarePlanRequest $request): JsonResponse
     {
-        //
+        $data = $request->validated();
+
+        $carePlan = $this->PatientCarePlanService->storePatientCarePlan($patient_id, $data);
+
+        if (!$carePlan) {
+            throw new \Exception('error');
+        }
+
+        return $this->successCreatedResponse($carePlan);
     }
 
     /**
@@ -41,13 +62,6 @@ class PatientCarePlanController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(PatientCarePlan $patientCarePlan)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.

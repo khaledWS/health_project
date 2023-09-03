@@ -77,14 +77,14 @@ Route::middleware('auth:sanctum')->group(function () {
                  */
                 Route::prefix('soap')->group(function () {
                     Route::get('/index', [PatientSoapController::class, 'index']); //done
-                    Route::get('/store', [PatientSoapController::class, 'store']);  //done:
-                    Route::get('/export', [PatientSoapController::class, 'export']); //TODO:
+                    Route::post('/store', [PatientSoapController::class, 'store']);  //done:
+                    Route::get('/export', [PatientSoapController::class, 'export']); //TODO
                 });
 
                 Route::prefix('careplan')->group(function () {
-                    Route::get('/index', [PatientCarePlanController::class, 'index']);
-                    Route::get('/store', [PatientCarePlanController::class, 'index']);
-                    Route::get('/export', [PatientCarePlanController::class, 'index']);
+                    Route::get('/index', [PatientCarePlanController::class, 'index']); //done
+                    Route::post('/store', [PatientCarePlanController::class, 'store']); //TODO
+                    Route::get('/export', [PatientCarePlanController::class, 'export']); //TODO
                 });
             });
         });

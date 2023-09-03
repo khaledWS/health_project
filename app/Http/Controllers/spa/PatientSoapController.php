@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\PatientSoap;
 use App\Http\Requests\StorePatientSoapRequest;
 use App\Http\Requests\UpdatePatientSoapRequest;
-use App\Http\Resources\PatientSoapCollection;
 use App\Http\Resources\PatientSoapCollectionResource;
 use App\Http\Traits\SpaPaginationTrait;
 use App\Http\Traits\SpaResponseTrait;
@@ -25,6 +24,7 @@ class PatientSoapController extends Controller
     {
         $this->PatientSoapService = $PatientSoapService;
     }
+
     /**
      * Display a listing of the resource.
      */
@@ -32,9 +32,9 @@ class PatientSoapController extends Controller
     {
         $paginationAttributes = $this->collectPaginationAttributes($request);
 
-        $soapCollection = $this->PatientSoapService->paginatePatientSoap($patient_id, $paginationAttributes);
+        $soapPaginated = $this->PatientSoapService->paginatePatientSoap($patient_id, $paginationAttributes);
 
-        $soapResourceCollection = new PatientSoapCollectionResource($soapCollection);
+        $soapResourceCollection = new PatientSoapCollectionResource($soapPaginated);
 
         return  $this->successResponseWithData($soapResourceCollection);
     }

@@ -22,8 +22,8 @@ class PatientSoapService
      */
     public function paginatePatientSoap(string $patient_id, array $paginationAttributes): array
     {
-        $patients = $this->PatientSoapRepository->paginate($patient_id, $paginationAttributes);
-        return $patients;
+        $soaps = $this->PatientSoapRepository->paginate($patient_id, $paginationAttributes);
+        return $soaps;
     }
     
 

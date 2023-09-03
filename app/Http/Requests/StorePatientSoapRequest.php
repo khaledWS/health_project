@@ -11,7 +11,7 @@ class StorePatientSoapRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class StorePatientSoapRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'doctor_id' => 'required',
+            'diagnosis_id' => 'required',
         ];
     }
 }

@@ -6,7 +6,6 @@ use App\Repositories\PatientCarePlanRepository;
 
 class PatientCarePlanService
 {
-
     protected $PatientCarePlanRepository;
 
     public function __construct(PatientCarePlanRepository $PatientCarePlanRepository)
@@ -15,13 +14,18 @@ class PatientCarePlanService
     }
 
     /**
-     * get Patients and paginate them
+     * get paginated careplans
      *
-     * @return \Illuminate\Support\Collection
+     * @return array
      */
-    public function paginatePatients($attributes)
+    public function paginatePatientSoap(string $patient_id, array $paginationAttributes): array
     {
-        $patients = $this->PatientCarePlanRepository->paginate($attributes);
-        return $patients;
+        $data = $this->PatientCarePlanRepository->paginate($patient_id, $paginationAttributes);
+        return $data;
+    }
+
+    public function storePatientCarePlan(string $patient_id, array $data): \App\Models\PatientCarePlan
+    {
+        return $this->PatientCarePlanRepository->store($patient_id, $data);
     }
 }

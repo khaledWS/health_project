@@ -2,36 +2,48 @@
 
 namespace App\Repositories;
 
+use App\Http\Traits\SpaPaginationTrait;
 use App\Models\PatientCarePlan;
 use Illuminate\Support\Collection;
 
 class PatientCarePlanRepository
 {
-    public function all(): Collection
+    use SpaPaginationTrait;
+    
+    public function paginate(string $patient_id, array $paginationAttributes): array
     {
-        return PatientCarePlan::all();
+        $data =   $this->getPatientCarePlanQuery($patient_id, $paginationAttributes)->get();
+        $count = $this->getPatientCarePlanQuery($patient_id, $paginationAttributes)->count();
+
+        return compact('data', 'count');
     }
 
-    public function find(String $id): ? PatientCarePlan
+
+    public function store(string $patient_id, array $data): PatientCarePlan
     {
-        return PatientCarePlan::find($id);
+        $data['patient_id'] = $patient_id;
+        $data['created_by'] = auth()->user();
+
+        return PatientCarePlan::create($data);
     }
 
-    public function insert(array $attributes): Bool
+    public function getPatientCarePlanQuery(string $patient_id, $paginationAttributes = null): \Illuminate\Database\Eloquent\Builder
     {
-        $PatientCarePlan = PatientCarePlan::insert($attributes);
-        return $PatientCarePlan;
+        $PatientCarePlanQuery =  PatientCarePlan::query()
+            ->select(PatientCarePlan::$select)
+            ->with([
+                'doctor' => function ($doctor) {
+                    $doctor->select('id', 'firstname', 'lastname', 'gender');
+                },
+            ])
+            ->where('patient_id', $patient_id);
+
+
+        if (isset($paginationAttributes)) {
+            $PatientCarePlanQuery = $this->addPaginateAttributesToQuery($PatientCarePlanQuery, $paginationAttributes);
+        }
+
+        return $PatientCarePlanQuery;
     }
 
-    public function update(String $id, array $attributes): Bool
-    {
-        $PatientCarePlan = PatientCarePlan::find($id);
-        return $PatientCarePlan->update($attributes);
-    }
-
-    public function delete(String $id): Bool
-    {
-        $PatientCarePlan = PatientCarePlan::find($id);
-        return $PatientCarePlan->delete();
-    }
 }
