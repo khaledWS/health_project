@@ -10,6 +10,7 @@ use App\Http\Controllers\spa\PatientVitalsController;
 use App\Http\Controllers\spa\TestCategoryController;
 use App\Http\Controllers\spa\TestController;
 use App\Http\Resources\UserResource;
+use App\Models\allergy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -94,7 +95,7 @@ Route::middleware('auth:sanctum')->group(function () {
                 /**
                  * Allergies Routes
                  */
-                Route::prefix('allergies')->group(function (){
+                Route::prefix('allergies')->group(function () {
                     // Route::get('/index', [::class, 'index']); //TODO
                     // Route::post('/store', [::class, 'store']); //TODO
                     // Route::get('/export', [::class, 'export']); //TODO
@@ -105,20 +106,21 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     Route::prefix('tests')->group(function () {
-        Route::get('/types', [TestController::class,'getTypes']);
-        Route::get('/types/tests', [TestController::class,'getTypeTests']);
-        Route::get('/categories', [TestCategoryController::class,'getCategories']);
-        Route::get('category/{category_id}/test', [TestController::class,'getCategoryTests']);
+        Route::get('/types', [TestController::class, 'getTypes']);
+        Route::get('/types/tests', [TestController::class, 'getTypeTests']);
+        Route::get('/categories', [TestCategoryController::class, 'getCategories']);
+        Route::get('category/{category_id}/test', [TestController::class, 'getCategoryTests']);
         Route::get('/labs', [TestController::class]);
     });
 
     Route::prefix('allergies')->group(function () {
-        // Route::get('/types', [::class,'getTypes']); //todo
-        Route::get('/allergen', [AllergenController::class,'getAllergen']); //todo
-        // Route::get('/severity', [::class,'getSeverity']); //todo
+        Route::get('/allergen', [AllergenController::class, 'getAllergen']); //done
+        Route::get('/allergies', function () { //CLEAN CODE
+            return allergy::all();
+        });
     });
 
 
     //Diagnosis route
-    Route::get('diagnosis', [DiagnosisController::class,'get']);
+    Route::get('diagnosis', [DiagnosisController::class, 'get']);
 });
