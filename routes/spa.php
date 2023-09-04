@@ -4,6 +4,7 @@ use App\Http\Controllers\spa\AllergenController;
 use App\Http\Controllers\spa\DiagnosisController;
 use App\Http\Controllers\spa\PatientSoapController;
 use App\Http\Controllers\spa\AuthController;
+use App\Http\Controllers\spa\PatientAllergyController;
 use App\Http\Controllers\spa\PatientCarePlanController;
 use App\Http\Controllers\spa\PatientController;
 use App\Http\Controllers\spa\PatientVitalsController;
@@ -96,9 +97,9 @@ Route::middleware('auth:sanctum')->group(function () {
                  * Allergies Routes
                  */
                 Route::prefix('allergies')->group(function () {
-                    // Route::get('/index', [::class, 'index']); //TODO
-                    // Route::post('/store', [::class, 'store']); //TODO
-                    // Route::get('/export', [::class, 'export']); //TODO
+                    Route::get('/index', [PatientAllergyController::class, 'index']); //done
+                    Route::post('/store', [PatientAllergyController::class, 'store']); //done
+                    Route::get('/export', [PatientAllergyController::class, 'export']); //TODO
                 });
             });
         });
