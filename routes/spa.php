@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\spa\AllergenController;
 use App\Http\Controllers\spa\DiagnosisController;
 use App\Http\Controllers\spa\PatientSoapController;
 use App\Http\Controllers\spa\AuthController;
@@ -81,10 +82,22 @@ Route::middleware('auth:sanctum')->group(function () {
                     Route::get('/export', [PatientSoapController::class, 'export']); //TODO
                 });
 
+                /**
+                 * Care Plan Routes
+                 */
                 Route::prefix('careplan')->group(function () {
                     Route::get('/index', [PatientCarePlanController::class, 'index']); //done
-                    Route::post('/store', [PatientCarePlanController::class, 'store']); //TODO
+                    Route::post('/store', [PatientCarePlanController::class, 'store']); //done
                     Route::get('/export', [PatientCarePlanController::class, 'export']); //TODO
+                });
+
+                /**
+                 * Allergies Routes
+                 */
+                Route::prefix('allergies')->group(function (){
+                    // Route::get('/index', [::class, 'index']); //TODO
+                    // Route::post('/store', [::class, 'store']); //TODO
+                    // Route::get('/export', [::class, 'export']); //TODO
                 });
             });
         });
@@ -97,6 +110,12 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/categories', [TestCategoryController::class,'getCategories']);
         Route::get('category/{category_id}/test', [TestController::class,'getCategoryTests']);
         Route::get('/labs', [TestController::class]);
+    });
+
+    Route::prefix('allergies')->group(function () {
+        // Route::get('/types', [::class,'getTypes']); //todo
+        Route::get('/allergen', [AllergenController::class,'getAllergen']); //todo
+        // Route::get('/severity', [::class,'getSeverity']); //todo
     });
 
 
