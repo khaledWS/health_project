@@ -4,9 +4,11 @@ use App\Http\Controllers\spa\AllergenController;
 use App\Http\Controllers\spa\DiagnosisController;
 use App\Http\Controllers\spa\PatientSoapController;
 use App\Http\Controllers\spa\AuthController;
+use App\Http\Controllers\spa\DiseaseController;
 use App\Http\Controllers\spa\PatientAllergyController;
 use App\Http\Controllers\spa\PatientCarePlanController;
 use App\Http\Controllers\spa\PatientController;
+use App\Http\Controllers\spa\PatientFamilyHistoryController;
 use App\Http\Controllers\spa\PatientVitalsController;
 use App\Http\Controllers\spa\TestCategoryController;
 use App\Http\Controllers\spa\TestController;
@@ -101,6 +103,16 @@ Route::middleware('auth:sanctum')->group(function () {
                     Route::post('/store', [PatientAllergyController::class, 'store']); //done
                     Route::get('/export', [PatientAllergyController::class, 'export']); //TODO
                 });
+
+
+                /**
+                 * Family History Routes
+                 */
+                Route::prefix('familyhistory')->group(function () {
+                    Route::get('/index', [PatientFamilyHistoryController::class, 'index']); //done
+                    Route::post('/store', [PatientFamilyHistoryController::class, 'store']); //done
+                    // Route::get('/export', [PatientFamilyHistoryController::class, 'export']); //TODO
+                });
             });
         });
     });
@@ -124,4 +136,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     //Diagnosis route
     Route::get('diagnosis', [DiagnosisController::class, 'get']);
+
+    //disease
+    Route::get('disease/getType', [DiseaseController::class, 'getTypes']);
+    Route::get('disease/get', [DiseaseController::class, 'getDiseasesFilterByType']);
 });
