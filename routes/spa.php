@@ -65,7 +65,7 @@ Route::middleware('auth:sanctum')->group(function () {
                 Route::prefix('tests')->group(function () {
                     Route::get('single-tests', [PatientController::class, 'get_single_tests']);
                     Route::get('profile-tests', [PatientController::class, 'get-profile-tests']);
-                    Route::post('order-test', [TestController::class, 'order-test']);
+                    Route::post('order-test', [TestController::class, 'order_test']);
                 });
 
                 /**
